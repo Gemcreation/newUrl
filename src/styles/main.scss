@@ -1,0 +1,722 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+// Variables
+$cyan: #2acfcf;
+$cyan-hover: #9be3e2;
+$dark-violet: #3b3054;
+$red: #f46262;
+$gray: #bfbfbf;
+$grayish-violet: #9e9aa7;
+$very-dark-blue: #232127;
+$light-gray: #f0f1f6;
+
+$font-poppins: 'Poppins', sans-serif;
+
+// Breakpoints
+$mobile: 375px;
+$tablet: 768px;
+$desktop: 1200px;
+
+// Global Resets
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-poppins;
+  font-size: 18px;
+  color: $grayish-violet;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $very-dark-blue;
+  font-weight: 700;
+}
+
+p {
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 700;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: $font-poppins;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.container {
+  width: 90%;
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
+// Button Styles
+.btn {
+  padding: 10px 24px;
+  background-color: $cyan;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 15px;
+  
+  &:hover {
+    background-color: $cyan-hover;
+  }
+}
+
+.btn-large {
+  padding: 14px 40px;
+  font-size: 18px;
+}
+
+.btn-square {
+  border-radius: 5px;
+}
+
+// -----------------------------------------------------------------------------
+// Component Styles
+// -----------------------------------------------------------------------------
+
+// 1. Navbar & Mobile Menu
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0;
+  position: relative;
+
+  &__logo {
+    img {
+      display: block;
+    }
+  }
+
+  &__links-desktop {
+    display: none; // Hidden on mobile
+
+    @media (min-width: $tablet) {
+      display: flex;
+      flex-grow: 1;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 45px;
+    }
+  }
+
+  &__nav-items {
+    display: flex;
+    gap: 30px;
+
+    a {
+      color: $grayish-violet;
+      font-size: 15px;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $very-dark-blue;
+      }
+    }
+  }
+
+  &__user-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    .login-link {
+      color: $grayish-violet;
+      font-size: 15px;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $very-dark-blue;
+      }
+    }
+  }
+
+  &__hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 21px;
+    cursor: pointer;
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background-color: $grayish-violet;
+      transition: all 0.3s ease;
+
+      &.open {
+        &:nth-child(1) {
+          transform: translateY(9px) rotate(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: translateY(-9px) rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  background-color: $dark-violet;
+  border-radius: 10px;
+  padding: 40px 24px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  z-index: 100;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  @media (min-width: $tablet) {
+    display: none;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    a {
+      color: #fff;
+      font-size: 18px;
+    }
+  }
+
+  &__divider {
+    border: none;
+    height: 1px;
+    background-color: rgba($gray, 0.2);
+    margin: 30px 0;
+  }
+
+  &__auth {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .login-link {
+      color: #fff;
+      font-size: 18px;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+// 2. Hero Section
+.hero {
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+  padding-bottom: 160px;
+  overflow: visible; // To allow image to bleed edge
+
+  @media (min-width: $desktop) {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    padding-bottom: 150px;
+  }
+
+  &__content {
+    margin-top: 40px;
+
+    @media (min-width: $desktop) {
+      flex: 1;
+      margin-top: 0;
+      padding-right: 40px;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      letter-spacing: -1px;
+
+      @media (min-width: $desktop) {
+        font-size: 80px;
+        margin-bottom: 5px;
+        letter-spacing: -2px;
+      }
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+
+      @media (min-width: $desktop) {
+        font-size: 22px;
+        margin-bottom: 40px;
+        max-width: 500px;
+      }
+    }
+  }
+
+  &__image {
+    // Bleeding edge strategy
+    position: relative;
+    right: -24px; // Slight offset on mobile to match design
+    max-width: 130%; // Allow it to be wider than container
+
+    @media (min-width: $desktop) {
+      flex: 1;
+      position: absolute;
+      right: -250px; // Bleed off right edge
+      top: 150px;
+      max-width: 50%; // Constrain so it doesn't break layout
+    }
+    
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+// 3. URL Shortener Section
+.url-manager {
+  position: relative;
+  z-index: 10;
+  margin-top: -80px; // Pull up over the below section
+  margin-bottom: 20px;
+}
+
+.url-shortener {
+  background-color: $dark-violet;
+  background-image: url('../assets/images/bg-shorten-mobile.svg');
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: cover;
+  padding: 24px;
+  border-radius: 10px;
+
+  @media (min-width: $tablet) {
+    background-image: url('../assets/images/bg-shorten-desktop.svg');
+    padding: 50px 60px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @media (min-width: $tablet) {
+      flex-direction: row;
+      gap: 24px;
+      align-items: flex-start;
+    }
+  }
+
+  &__input-container {
+    width: 100%;
+    position: relative;
+    
+    @media (min-width: $tablet) {
+      flex: 1;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 5px;
+    border: 3px solid transparent; // Reserve space for error state
+    font-family: $font-poppins;
+    font-size: 16px;
+    outline: none;
+
+    @media (min-width: $tablet) {
+      padding: 18px 30px;
+      font-size: 20px;
+    }
+
+    &::placeholder {
+      color: $gray;
+    }
+
+    &.error {
+      border-color: $red;
+      &::placeholder {
+        color: rgba($red, 0.5);
+      }
+    }
+  }
+
+  &__error-msg {
+    color: $red;
+    font-size: 12px;
+    font-style: italic;
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+
+    @media (min-width: $tablet) {
+      font-size: 16px;
+      bottom: -30px;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+
+    @media (min-width: $tablet) {
+      width: 188px;
+    }
+  }
+}
+
+// 4. Link Results
+.url-results {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.link-item {
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 16px;
+
+  @media (min-width: $tablet) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    font-size: 20px;
+  }
+
+  &__original {
+    padding: 16px;
+    border-bottom: 1px solid rgba($gray, 0.3);
+    color: $very-dark-blue;
+    word-break: break-all;
+
+    @media (min-width: $tablet) {
+      padding: 0;
+      border-bottom: none;
+      flex: 1;
+      padding-right: 20px;
+    }
+  }
+
+  &__shortened {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    @media (min-width: $tablet) {
+      padding: 0;
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+    }
+
+    p {
+      color: $cyan;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+
+      @media (min-width: $tablet) {
+        width: 100px;
+      }
+
+      &.btn--copied {
+        background-color: $dark-violet;
+        &:hover {
+          background-color: $dark-violet;
+        }
+      }
+    }
+  }
+}
+
+// 5. Statistics Section
+.statistics {
+  background-color: $light-gray;
+  padding-bottom: 80px;
+  margin-top: -160px; // Pull up under the url manager
+  padding-top: 260px; // Add back the space
+
+  @media (min-width: $desktop) {
+    padding-bottom: 120px;
+    margin-top: -150px;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 90px;
+
+    @media (min-width: $desktop) {
+      margin-bottom: 100px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 16px;
+
+      @media (min-width: $desktop) {
+        font-size: 40px;
+        margin-bottom: 18px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto;
+
+      @media (min-width: $desktop) {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+    position: relative;
+    text-align: center;
+
+    @media (min-width: $desktop) {
+      flex-direction: row;
+      gap: 30px;
+      text-align: left;
+      align-items: flex-start;
+      height: 350px;
+    }
+  }
+
+  &__line {
+    position: absolute;
+    background-color: $cyan;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 100%;
+    top: 0;
+
+    @media (min-width: $desktop) {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 8px;
+    }
+  }
+}
+
+.statistic-card {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 0 30px 40px;
+  position: relative;
+  z-index: 2;
+
+  &__icon {
+    width: 88px;
+    height: 88px;
+    background-color: $dark-violet;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -44px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media (min-width: $desktop) {
+      left: 30px;
+      transform: none;
+    }
+  }
+
+  h3 {
+    margin-top: 75px;
+    margin-bottom: 12px;
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+// 6. Boost Section
+.boost {
+  background-color: $dark-violet;
+  background-image: url('../assets/images/bg-boost-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 90px 20px;
+
+  @media (min-width: $tablet) {
+    background-image: url('../assets/images/bg-boost-desktop.svg');
+    padding: 70px 0;
+  }
+
+  h2 {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 16px;
+
+    @media (min-width: $desktop) {
+      font-size: 40px;
+      margin-bottom: 32px;
+    }
+  }
+}
+
+// 7. Footer
+.footer {
+  background-color: $very-dark-blue;
+  padding: 50px 0;
+  color: #fff;
+  text-align: center;
+
+  @media (min-width: $tablet) {
+    text-align: left;
+    padding: 70px 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: $tablet) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo {
+    margin-bottom: 50px;
+
+    @media (min-width: $tablet) {
+      margin-bottom: 0;
+      flex: 1;
+    }
+
+    // Since graphic is an SVG but we only have process.env.PUBLIC_URL + /images/logo.svg which is dark,
+    // we need to apply a filter to make it white in the footer.
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &__links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 50px;
+
+    @media (min-width: $tablet) {
+      flex-direction: row;
+      gap: 80px;
+      margin-bottom: 0;
+      flex: 2;
+    }
+  }
+
+  &__links-group {
+    h4 {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      a {
+        color: $gray;
+        font-weight: 500;
+        font-size: 15px;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $cyan;
+        }
+      }
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+
+    a {
+      transition: all 0.3s ease;
+      display: inline-flex; // prevent img from adding extra space
+
+      img {
+        transition: filter 0.3s ease;
+      }
+      
+      &:hover img {
+        // filter to pure cyan
+        filter: invert(72%) sepia(50%) saturate(601%) hue-rotate(125deg) brightness(88%) contrast(85%);
+      }
+    }
+  }
+}
