@@ -111,7 +111,8 @@ button {
   }
 
   &__links-desktop {
-    display: none; // Hidden on mobile
+    display: none; 
+    // Hidden on mobile
 
     @media (min-width: $tablet) {
       display: flex;
@@ -251,7 +252,8 @@ button {
   flex-direction: column-reverse;
   text-align: center;
   padding-bottom: 160px;
-  overflow: visible; // To allow image to bleed edge
+  overflow: visible; 
+  // To allow image to bleed edge
 
   @media (min-width: $desktop) {
     flex-direction: row;
@@ -314,6 +316,67 @@ button {
     }
   }
 }
+
+// /nnnnnnnnnnnnnnnnnnnnnnnnnnnn/ /////////////////////////
+// .hero {
+//   display: flex;
+//   align-items: center;
+//   margin-bottom: 120px;
+//   padding-bottom: 60px;
+  
+//   .hero-content {
+//     flex: 1;
+//     padding-right: 20px;
+    
+//     h1 {
+//       font-size: 4.5rem;
+//       line-height: 1.1;
+//       margin-bottom: 10px;
+//       letter-spacing: -2px;
+//     }
+    
+//     p {
+//       font-size: 1.25rem;
+//       margin-bottom: 35px;
+//       max-width: 500px;
+//       line-height: 1.6;
+//     }
+//   }
+
+//   .hero-image {
+//     flex: 1;
+//     position: relative;
+//     img {
+//       width: 120%;
+//       max-width: 800px;
+//     }
+//   }
+
+//   @include respond-to(768px) {
+//     flex-direction: column-reverse;
+//     text-align: center;
+//     margin-bottom: 80px;
+
+//     .hero-content {
+//       padding-right: 0;
+//       h1 { font-size: 2.8rem; }
+//       p { 
+//         margin: 0 auto 30px auto; 
+//         font-size: 1.1rem; 
+//       }
+//     }
+
+//     .hero-image {
+//       margin-bottom: 40px;
+//       img {
+//         width: 130%;
+//         margin-left: 30px;
+//       }
+//     }
+//   }
+// }
+
+// /nnnnnnnnnnnnnnnnnnnnnnnnnnnn/ /////////////////////////
 
 // 3. URL Shortener Section
 .url-manager {

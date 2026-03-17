@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MobileMenu from './MobileMenu';
+import navLogo from '../assets/images/logo.svg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className="navbar container">
       <div className="navbar__logo">
-        <img src={process.env.PUBLIC_URL + '/images/logo.svg'} alt="Shortly Logo" />
+        <img src={navLogo} alt="Shortly logo" />
       </div>
 
       {/* Desktop Navigation */}
